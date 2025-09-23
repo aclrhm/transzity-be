@@ -1,3 +1,4 @@
+import pool from "../db.js";
 import * as User from "../models/userModels.js";
 import bcrypt from "bcrypt";
 
@@ -30,13 +31,21 @@ export async function getUsers(req, res) {
 }
 export async function getTestapi(req, res) {
   try {
-   res.status(200).json({ message: "lopberhasil yey horeyy wuhuu anjay mabar :)" });
+    // test query sederhana
+    const result = await pool.query("SELECT NOW()");
+    
+    res.status(200).json({
+      message: "DB Connected ✅",
+      dbTime: result.rows[0],
+    });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to fetch users" });
+    res.status(500).json({
+      error: "DB Connection Failed ❌",
+      details: err.message,
+    });
   }
 }
-
 export async function login(req, res) {
   try {
     const { email, password } = req.body;
