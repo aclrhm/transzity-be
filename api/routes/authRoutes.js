@@ -7,7 +7,6 @@ const { verifyToken } = require('../middleware/auth');
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 router.post('/forgot-password', authController.forgotPassword);
-router.get('/test', authController.test);
 
 // Protected route example
 router.get('/profile', verifyToken, (req, res) => {

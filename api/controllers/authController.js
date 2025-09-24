@@ -33,9 +33,7 @@ exports.register = async (req, res) => {
   }
 };
 
-exports.test = async (req, res) => {
-  return success(res, 'Test routeeeeeeeeee');
-};
+
 
 // Login a user
 exports.login = async (req, res) => {
