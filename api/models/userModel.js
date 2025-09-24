@@ -1,6 +1,6 @@
 const { admin } = require('../config/firebase');
 
-// Firebase doesn't use traditional models, but we can create a wrapper for user-related operations
+
 
 class User {
   // Get user by ID

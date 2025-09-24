@@ -2,6 +2,7 @@ const axios = require('axios');
 const { admin } = require('../config/firebase');
 const { success, error } = require('../utils/responseHandler');
 
+
 // Register a new user
 exports.register = async (req, res) => {
   try {
@@ -12,7 +13,7 @@ exports.register = async (req, res) => {
       return error(res, 'Email and password are required', 400);
     }
     
-    // Create user in Firebase Authentication
+    // Create user 
     const userRecord = await admin.auth().createUser({
       email,
       password,
