@@ -34,7 +34,7 @@ exports.register = async (req, res) => {
 };
 
 exports.test = async (req, res) => {
-  return success(res, 'Test route');
+  return success(res, 'Test routeeeeeeeeee');
 };
 
 // Login a user
