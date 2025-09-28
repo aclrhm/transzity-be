@@ -8,6 +8,7 @@ dotenv.config();
 
 // Import routes
 const authRoutes = require('./api/routes/authRoutes.js');
+const reportRoutes = require('./api/routes/reportRoutes.js');
 
 // Initialize express app
 const app = express();
@@ -21,6 +22,7 @@ app.use(morgan('dev'));
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/report', reportRoutes);
 
 // Home route
 app.get('/', (req, res) => {

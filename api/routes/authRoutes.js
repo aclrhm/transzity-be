@@ -8,7 +8,7 @@ router.post('/register', authController.register);
 router.post('/login', authController.login);
 router.post('/forgot-password', authController.forgotPassword);
 
-// Protected route example
+// Protected route 
 router.get('/profile', verifyToken, (req, res) => {
   res.json({
     status: 'success',
