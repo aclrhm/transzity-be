@@ -6,7 +6,7 @@ exports.createReport = async (req, res) => {
   try {
     const { id_user, nomor_bus, rute, keluhan_text } = req.body;
     const file = req.file;
-
+    console.log("file", file);
     let fotoUrl = null;
 
     // Upload ke Firebase Storage
