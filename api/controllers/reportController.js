@@ -5,26 +5,6 @@ const Report = require("../models/reportModel");
 exports.createReport = async (req, res) => {
   try {
     const { id_user, nomor_bus, rute, keluhan_text } = req.body;
-    const file = req.file;
-    console.log("file", file);
-    let fotoUrl = null;
-
-    // Upload ke Firebase Storage
-    if (file) {
-      const filename = `reports/${uuidv4()}-${file.originalname}`;
-      const fileUpload = admin.storage().bucket().file(filename);
-
-      await fileUpload.save(file.buffer, {
-        metadata: { contentType: file.mimetype },
-      });
-
-      const [url] = await fileUpload.getSignedUrl({
-        action: "read",
-        expires: "03-01-2030",
-      });
-
-      fotoUrl = url;
-    }
 
     const id_report = `REP-${Date.now()}`;
     const created_at = new Date().toISOString().split("T")[0];
@@ -35,7 +15,6 @@ exports.createReport = async (req, res) => {
       id_user,
       nomor_bus,
       rute,
-      foto_keluhan: fotoUrl,
       keluhan_text,
       created_at,
       created_time,
