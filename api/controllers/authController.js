@@ -6,7 +6,7 @@ const { success, error } = require('../utils/responseHandler');
 // Register a new user
 exports.register = async (req, res) => {
   try {
-    const { email, password, displayName } = req.body;
+    const { email, password, name } = req.body;
     
     // Validation
     if (!email || !password) {
@@ -17,7 +17,7 @@ exports.register = async (req, res) => {
     const userRecord = await admin.auth().createUser({
       email,
       password,
-      displayName: displayName || '',
+      name,
       emailVerified: false,
     });
     
@@ -25,7 +25,7 @@ exports.register = async (req, res) => {
     return success(res, 'User registered successfully', {
       uid: userRecord.uid,
       email: userRecord.email,
-      displayName: userRecord.displayName
+      name: userRecord.name
     }, 201);
     
   } catch (err) {
