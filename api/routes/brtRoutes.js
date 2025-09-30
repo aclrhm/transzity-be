@@ -4,6 +4,6 @@ const { listRoutes, getRouteDetail } = require("../controllers/routesController"
 
 // Endpoint: list semua rute
 router.get("/listRoutes", listRoutes);
-router.get("/:number", getRouteDetail);
+router.get("/listRoutes/:number", getRouteDetail);
 
 module.exports = router;
