@@ -10,6 +10,7 @@ dotenv.config();
 const authRoutes = require('./api/routes/authRoutes.js');
 const reportRoutes = require('./api/routes/reportRoutes.js');
 const brtRoutes = require('./api/routes/brtRoutes.js');
+const tjDataRoutes = require('./api/routes/tjDataRoutes.js');
 
 // Initialize express app
 const app = express();
@@ -25,6 +26,7 @@ app.use(morgan('dev'));
 app.use('/api/auth', authRoutes);
 app.use('/api/report', reportRoutes);
 app.use('/api/brt', brtRoutes);
+app.use('/api/tjData', tjDataRoutes);
 
 // Home route
 app.get('/', (req, res) => {
