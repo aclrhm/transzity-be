@@ -7,9 +7,12 @@ const listenTjData = (callback) => {
 
   // realtime
   const listener = ref.on("value", (snapshot) => {
+    console.log("data");
     const data = snapshot.val() || {};
     callback(data);
   });
+
+  
 
   // stop listening
   return () => ref.off("value", listener);
