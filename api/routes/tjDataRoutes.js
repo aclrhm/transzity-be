@@ -3,7 +3,7 @@ const { getOnceTjData, streamTjData } = require("../controllers/tjDataController
 
 const router = express.Router();
 
-router.get("/", getOnceTjData);      
+router.get("/getAllData", getOnceTjData);      
 router.get("/realtime", streamTjData);
 
 module.exports = router;
