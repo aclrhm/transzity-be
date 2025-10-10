@@ -46,7 +46,7 @@ const streamTjData = (req, res) => {
 const getTjData = async (req, res) => {
   try {
     const db = admin.database();
-    const ref = db.ref("tj_data"); // pastikan path benar
+    const ref = db.ref("tj_data"); 
     const snapshot = await ref.once("value");
     const data = snapshot.val();
 
