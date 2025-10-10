@@ -43,4 +43,27 @@ const streamTjData = (req, res) => {
   }
 };
 
-module.exports = { getOnceTjData, streamTjData };
+const getTjData = async (req, res) => {
+  try {
+    const db = admin.database();
+    const ref = db.ref("tj_data"); // pastikan path benar
+    const snapshot = await ref.once("value");
+    const data = snapshot.val();
+
+    if (!data) {
+      return res.json({ success: true, data: [] });
+    }
+
+    // Konversi object menjadi array
+    const arrData = Object.keys(data).map((key) => ({
+      ...data[key],
+    }));
+
+    res.json({ success: true, data: arrData });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+module.exports = { getOnceTjData, streamTjData, getTjData };
